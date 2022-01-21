@@ -5,16 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
     <title>Etch-a-Sketch</title>
 </head>
 <body>
     <div class="flex">
-        <button id="start-btn">Start</button>
+        <h1>Etch-a-Sketch</h1>
     </div>
-    
-    
-    <div id="container">
 
+    <div class="main">
+        <div id="grid-container">
+
+        </div>
+
+        <div class="controls flex">
+            <div class="input">
+                <input name="resize" id="new-size" type="text" maxlength="3" onchange="handleChange(this);">
+                <input name="buttonExecute" onclick="resizeGrid()" type="button" value="Resize"
+                id="resize-btn" class="btn"/>
+            </div>
+
+            <button class="btn" id="paint-btn">Paint</button>
+            <button class="btn" id="eraser-btn">Eraser</button>
+            <button  class= "btn" id="clearBtn">Clear</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

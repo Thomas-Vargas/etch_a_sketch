@@ -1,3 +1,11 @@
+:root {
+    --dark-blue: #2b2f3d;
+    --light-blue: #466874;
+    --white: #f7f7e2;
+    --tan: #9f926e;
+    --gray: #4f4e47;
+}
+
 *,
 *::before,
 *::after {
@@ -7,14 +15,28 @@
 }
 
 body {
-    background-color: #333333;
+    background-color: var(--dark-blue);
     font-family: 'Titillium Web', sans-serif;
+    /* footer support */
+    margin-bottom: 100px;
 }
 
 h1 {
-    color: cornflowerblue;
+    color: var(--white);
     font-size: 60px;
     margin: 20px 0px;
+}
+
+h2 {
+    background-color: var(--light-blue);
+    color: var(--white);
+    text-align: center;
+    font-size: 25px;
+    font-weight: none;
+}
+
+a {
+    color: var(--white);
 }
 
 .flex {
@@ -24,14 +46,13 @@ h1 {
 }
 
 .main {
-    padding-top: 40px;
-    padding-bottom: 60px;
+    padding: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 1100px;
     margin: 0 auto;
-    gap: 100px;
+    gap: 50px;
 }
 
 /* Grid section */  
@@ -40,41 +61,83 @@ h1 {
     height: 500px;
     width: 500px;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
-    background-color: #fefefe;
+    background-color: var(--white);
 }
 
 /* Controls section */
 .controls {
     gap: 20px;
+    padding-left: 20px;
     flex-direction: column;
     height: 500px;
-    width: 250px;
-    border: 1px solid cornflowerblue;
+    width: 230px;
+    align-items: flex-start;
 }
 
 .btn {
-    background: none;
+    background: var(--dark-blue);
     font-size: 20px;
-    color: cornflowerblue;
-    border: 2px solid cornflowerblue;
+    color: var(--white);
+    border: 2px solid var(--light-blue);
     cursor: pointer;
+    width: 100px;
     padding: 5px 10px;
     border-radius: 10px;
     font-family: 'Titillium Web', sans-serif;
 }
 
+button:hover, 
+input:hover {
+    transform: scale(1.05);
+}
+
 #new-size {
-    color: cornflowerblue;
+    color: var(--white);
     font-size: 18px;
     text-align: center;
     width: 40px;
     height: 30px;
-    border: 2px solid cornflowerblue;
-    background-color: #333333;
+    border: 2px solid var(--light-blue);
+    background-color: var(--dark-blue);
     border-radius: 10px;
-    margin-right: 5px;
+    margin-left: 10px;
+    justify-self: center;
 }
 
 input:focus {
     outline: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: var(--light-blue);
+}
+
+.github {
+    color: var(--white);
+    font-size: 36px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.github:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
+#color-picker {
+    display: none;
+}
+
+html {
+    /* footer support */
+    position: relative;
+    min-height: 100%;
 }

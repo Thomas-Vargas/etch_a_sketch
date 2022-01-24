@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Etch-a-Sketch</title>
 </head>
 <body>
@@ -16,23 +18,34 @@
     </div>
 
     <div class="main">
-        <div id="grid-container">
-
-        </div>
+        <div id="grid-container"></div>
 
         <div class="controls flex">
             <div class="input">
-                <input name="resize" id="new-size" type="text" maxlength="3" onchange="handleChange(this);">
                 <input name="buttonExecute" onclick="resizeGrid()" type="button" value="Resize"
                 id="resize-btn" class="btn"/>
+                <input name="resize" id="new-size" type="text" maxlength="3" onchange="handleChange(this);">
             </div>
 
-            <button class="btn" id="paint-btn">Paint</button>
+            <input type="color" id="color-picker" value="#333333">
+            <button class="btn" id="paint-btn"><i class="fa fa-paint-brush"></i></button>
+
+            <button class="btn" id="color-btn">Color</button>
             <button class="btn" id="eraser-btn">Eraser</button>
             <button  class= "btn" id="clearBtn">Clear</button>
         </div>
     </div>
 
+    <footer>
+        <div class="footer">
+            <h2>Copyright &copy 2022 Thomas Vargas</h2>
+            <div class="github">
+                <a href="https://github.com/thomas-vargas" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

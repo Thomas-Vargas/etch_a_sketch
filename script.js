@@ -10,10 +10,13 @@ const container = document.getElementById("grid-container");
 const clearBtn = document.getElementById("clearBtn");
 const resizeBtn = document.getElementById("resize-btn");
 const eraserBtn = document.getElementById("eraser-btn");
-const paintBtn = document.getElementById("paint-btn");
+const colorBtn = document.getElementById("color-btn");
+const paintBtn = document.getElementById("paint-btn")
+const colorPicker = document.getElementById("color-picker");
 const input = document.getElementById("new-size");
 
-paintBtn.addEventListener("click", function() {
+//Buttons/input
+colorBtn.addEventListener("click", function() {
     currentMode = 'color';
 });
 
@@ -25,6 +28,7 @@ clearBtn.addEventListener("click", function() {
 resizeBtn.addEventListener("click", function() {
     const newSize = document.getElementById("new-size").value;
     resizeGrid(newSize);
+    clearText();
 });
 
 input.addEventListener("keyup", function(event) {
@@ -37,15 +41,41 @@ eraserBtn.addEventListener("click", function() {
     currentMode = "eraser";
 });
 
-function handleChange(input) {
-    if (input.value < 0) input.value = 0;
-    if (input.value > 100) input.value = 100;
-}
+paintBtn.addEventListener("click", function() {
+    document.getElementById("color-picker").click();
+    clearGrid();
+    createGrid(currentSize);
+});
+
+colorPicker.onchange = (e) => setCurrentColor(e.target.value);
+
+function setCurrentColor(newColor) {
+    currentColor = newColor;
+};
 
 function setCurrentMode(newMode) {
     activateButton(newMode);
     currentMode = newMode;
-}
+};
+
+//Accept only inputs <= 100
+function handleChange(input) {
+    if (input.value < 0) input.value = 0;
+    if (input.value > 100) input.value = 100;
+};
+
+//Clear input box
+function clearText() {
+    document.getElementById("new-size").value = "";
+};
+
+function changeColor(e) {
+    if (currentMode === 'color') {
+      e.target.style.backgroundColor = currentColor;
+    } else if (currentMode === 'eraser') {
+      e.target.style.backgroundColor = '#f7f7e2';
+    }
+};
 
 function createGrid(size) {
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -57,14 +87,6 @@ function createGrid(size) {
         container.appendChild(box).className = "grid-item";
     };
 };
-
-function changeColor(e) {
-    if (currentMode === 'color') {
-      e.target.style.backgroundColor = currentColor;
-    } else if (currentMode === 'eraser') {
-      e.target.style.backgroundColor = '#fefefe';
-    }
-}
 
 function resizeGrid(newSize) {
     currentSize = newSize;
